@@ -16,8 +16,8 @@ const base64ToImage = async (file) => {
     let fileName = Date.now();
     const finalImage = {
         name: fileName,
-        path: './file/',
-        image: './file/' + fileName + '.' + extension,
+        path: './temp_file/',
+        image: './temp_file/' + fileName + '.' + extension,
         imageBuffer
     };
     await fs.writeFile(finalImage.image, imageBuffer);

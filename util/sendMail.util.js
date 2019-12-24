@@ -2,8 +2,8 @@ const nodemailer = require('nodemailer');
 const util = require('util');
 const fs = require('fs');
 const config = require('../');
-// console.log(config.mailUSERNAME);
-nodemailer.sendmail = true;
+
+//  Class for sending email
 class SendMail {
     constructor() {
         this.transporter = nodemailer.createTransport({
@@ -19,12 +19,12 @@ class SendMail {
         this.mailOptions = {
             from: config.mailUSERNAME,
             to: config.mailTo,
-            subject: 'Sending Email using Node.js',
-            text: 'That was easy!'
+            subject: 'MieterEngel coding challenge!',
+            text: 'Coding Challenge - Sodruldeen Mustapha'
         };
         this.mailSender = util.promisify(this.transporter.sendMail.bind(this.transporter));
     }
-
+    //  Send email method
     async sendMail(fileName) {
         const attachment = {
             attachments: [{
@@ -42,8 +42,7 @@ class SendMail {
         } catch (e) {
             console.log(e);
         }
-        // fs.unlinkSync(file.path);
-        fs.unlinkSync(fileName);
+        fs.unlinkSync(fileName);//Delete the pdf after sending email
     }
 }
 

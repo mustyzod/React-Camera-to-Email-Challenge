@@ -13,6 +13,11 @@
     }
 }
 
+.react-html5-camera-photo>img,
+.react-html5-camera-photo>video {
+    width: 260px !important;
+}
+
 /* fullscreen enable by props */
 .demo-image-preview-fullscreen>img {
     width: 100vw;

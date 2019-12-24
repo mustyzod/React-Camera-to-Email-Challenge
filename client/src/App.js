@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, {
+  useState
+} from 'react';
 import './App.css';
 import styled from 'styled-components';
 import TakePhoto from './components/TakePhoto';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 const Container = styled.div`
     padding: 5rem;
     background-color: #f3f3f3;
-    width: auto;
+    width: 400px;
     height: auto;
     margin: 0 auto;
 `;
@@ -28,23 +32,36 @@ const Appstart = styled.div`
 
 const App = () => {
   const [snapPhoto, setSnapPhoto] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const AppStartBtn = () => {
     return (
-      <Appstart onClick={() => setSnapPhoto(true)} >
+      <Appstart
+        onClick={
+          () => setSnapPhoto(true)
+        }>
         Start
-    </Appstart>
+      </Appstart>
     );
   }
 
   return (
     <Container>
+      <SweetAlert
+        show={showAlert}
+        title="Success!"
+        text="Photo Successfully Sent!"
+        onConfirm={() => setShowAlert(false)}
+      />
       {
         (snapPhoto === false)
           ?
           <AppStartBtn />
           :
-          <TakePhoto setSnapPhoto={setSnapPhoto} />
+          <TakePhoto
+            setSnapPhoto={setSnapPhoto}
+            setShowAlert={setShowAlert}
+          />
       }
     </Container>
   );

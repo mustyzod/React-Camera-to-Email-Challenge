@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import React from 'react';
 
 import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import ImagePreview from './ImagePreview';
@@ -11,33 +10,36 @@ const PreviewWrapper = styled.div`
     width:260px;
     margin:0 auto;
 `;
-
-const TakePhoto = ({ setSnapPhoto }) => {
+const Buttons = styled.div`
+    margin:0 auto;
+    width:260px;
+    height:50px;
+    border:solid 1px #14610a;
+    background-color:${props => (props.bgColor) ? props.bgColor : '#ccc'};
+    border-radius:5px;
+    color:white;
+    font-family:san-serif;
+    font-size: xx-large;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor:pointer;
+`;
+const TakePhoto = ({ setSnapPhoto, setShowAlert }) => {
     const [dataUri, setDataUri] = useState('');
-    // const [imageNumber, setImageNumber] = useState(0);
-
-    // function handleTakePhoto(dataUri) {
-    //     // Do stuff with the photo...
-    //     // downloadImageFile(dataUri, imageNumber);
-    //     // setImageNumber(imageNumber + 1);
-    //     console.log('takePhoto');
-    //     // alert(dataUri);
-    // }
 
 
-    function handleTakePhotoAnimationDone(dataUri) {
+    const handleTakePhotoAnimationDone = (dataUri) => {
         // console.log('takePhoto');
         setDataUri(dataUri);
-        // setMailButton(true);
-        // handleCameraStop();
     }
-
-
-
 
     const isFullscreen = false;
     return (
         <React.Fragment>
+            <Buttons bgColor={"#ccc"} onClick={() => setSnapPhoto(false)}>
+                Home
+            </Buttons>
             {
                 (dataUri)
                     ?
@@ -45,7 +47,12 @@ const TakePhoto = ({ setSnapPhoto }) => {
                         <ImagePreview dataUri={dataUri}
                             isFullscreen={isFullscreen}
                         />
-                        <SendMailBtn dataUri={dataUri} setDataUri={setDataUri} />
+                        <SendMailBtn
+                            dataUri={dataUri}
+                            setDataUri={setDataUri}
+                            setShowAlert={setShowAlert} s
+                            setSnapPhoto={setSnapPhoto}
+                        />
                     </PreviewWrapper>
                     :
                     <PreviewWrapper>

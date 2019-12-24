@@ -10,7 +10,7 @@ const BtnWrapper = styled.div`
 const Buttons = styled.div`
     width:inherit;
     height:50px;
-    border:solid 1px #ccc;
+    border:solid 1px #173c0ed4;
     background-color:${props => (props.bgColor) ? props.bgColor : '#ccc'};
     border-radius:5px;
     color:white;
@@ -21,17 +21,16 @@ const Buttons = styled.div`
     line-height: 40px;
     cursor:pointer;
 `;
-
-
-const SendMailBtn = ({ dataUri, setDataUri }) => {
-    // console.log(dataUri);
+const SendMailBtn = ({ dataUri, setDataUri, setShowAlert, setSnapPhoto }) => {
     const SendMail = (dataUri) => {
         const body = {
             base64Data: dataUri
         };
         axios.post('/api/upload', body)
             .then(response => {
-                console.log(response);
+                setShowAlert(true);
+                setSnapPhoto(false);
+                // console.log(response);
             })
             .catch(err => {
                 console.log(err);
