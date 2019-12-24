@@ -4,6 +4,7 @@
 
 # Dependencies
 /node_modules
+/client/node_modules
 
 # Test coverage
 /coverage
