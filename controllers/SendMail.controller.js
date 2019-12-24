@@ -11,13 +11,7 @@ exports.postSendEmail = async (req, res, next) => {
     }
 
     await snapAndSend(base64Data);
-    return res.send(base64Data);
-    // base64ToImage(base64Data)
-    //     .then(image => {
-    //         imageToPdf(image)
-    //             .then(pdf => {
-    //                 console.log(pdf);
-    //             });
-    //     })
-    //     .catch(err => console.log(err))
+    return res.send({
+        msg: "successful"
+    });
 };

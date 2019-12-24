@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const util = require('util');
 const fs = require('fs');
-const config = require('../config');
+const config = require('../');
 // console.log(config.mailUSERNAME);
 nodemailer.sendmail = true;
 class SendMail {
