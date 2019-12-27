@@ -14,7 +14,6 @@ const imageToPdf = async file => {
     });
     await doc.end();
     fs.unlinkSync(file.image); //delete the image
-    // return pdfFile;
 }
 
 module.exports = imageToPdf;

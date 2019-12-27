@@ -28,9 +28,7 @@ const Buttons = styled.div`
 const TakePhoto = ({ setSnapPhoto, setShowAlert }) => {
     const [dataUri, setDataUri] = useState('');
 
-
     const handleTakePhotoAnimationDone = (dataUri) => {
-        // console.log('takePhoto');
         setDataUri(dataUri);
     }
 

@@ -4,8 +4,9 @@ exports.postSendEmail = async (req, res, next) => {
     const {
         base64Data
     } = req.body;
+
     if (!base64Data) {
-        const error = new Error('Please upload a file');
+        const error = new Error('Please snap a picture');
         error.httpStatusCode = 400;
         return next(error);
     }

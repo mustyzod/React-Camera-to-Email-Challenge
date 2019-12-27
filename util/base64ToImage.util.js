@@ -2,7 +2,7 @@ const mime = require('mime');
 const fs = require('fs').promises;
 
 const base64ToImage = async (file) => {
-    var matches = file.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+    const matches = file.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
     if (matches.length !== 3) {
         return new Error('Invalid input string');

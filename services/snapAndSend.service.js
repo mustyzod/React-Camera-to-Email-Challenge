@@ -11,7 +11,6 @@ const snapAndSend = async (base64Data) => {
         await mailer.sendMail(pdf);
         return Promise.resolve();
     } catch (e) {
-        console.log(e);
         return Promise.reject(e);
     }
 }

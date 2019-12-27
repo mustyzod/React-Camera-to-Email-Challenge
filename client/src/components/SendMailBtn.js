@@ -28,9 +28,9 @@ const SendMailBtn = ({ dataUri, setDataUri, setShowAlert, setSnapPhoto }) => {
         };
         axios.post('/api/upload', body)
             .then(response => {
+                console.log('here: ' + response);
                 setShowAlert(true);
                 setSnapPhoto(false);
-                // console.log(response);
             })
             .catch(err => {
                 console.log(err);

@@ -12,6 +12,8 @@
     "util": "^0.12.1"
   },
   "devDependencies": {
+    "is-base64": "^1.0.0",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.2"
   },
   "scripts": {
