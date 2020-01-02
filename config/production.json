@@ -1,5 +1,6 @@
 {
     "mailTo": "coding-challenge@mieterengel.de",
-    "mailUSERNAME": "",
-    "mailPASSWORD": ""
+    "mailFrom": "mustyzod@gmail.com",
+    "SENDGRID_USERNAME": "",
+    "SENDGRID_PASSWORD": ""
 }
