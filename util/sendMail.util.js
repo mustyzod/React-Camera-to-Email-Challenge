@@ -1,30 +1,29 @@
 const nodemailer = require('nodemailer');
 const util = require('util');
 const fs = require('fs');
-const config = require('../');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+const config = require('../config');
 
-//  Class for sending email
+nodemailer.sendmail = true;
 class SendMail {
     constructor() {
-        this.transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false,
-            requireTLS: true,
-            auth: {
-                user: config.mailUSERNAME,
-                pass: config.mailPASSWORD
-            }
-        });
+        this.transporter = nodemailer.createTransport(
+            sendgridTransport({
+                auth: {
+                    api_user: config.SENDGRID_USERNAME, // SG username
+                    api_key: config.SENDGRID_PASSWORD, // SG password
+                },
+            })
+        );
         this.mailOptions = {
-            from: config.mailUSERNAME,
+            from: config.mailFrom,
             to: config.mailTo,
-            subject: 'MieterEngel coding challenge!',
-            text: 'Coding Challenge - Sodruldeen Mustapha'
+            subject: 'MieterEngel coding challenge - Sodruldeen Mustapha',
+            text: 'Please find the attached picture in pdf format'
         };
         this.mailSender = util.promisify(this.transporter.sendMail.bind(this.transporter));
     }
-    //  Send email method
+
     async sendMail(fileName) {
         const attachment = {
             attachments: [{
@@ -42,7 +41,7 @@ class SendMail {
         } catch (e) {
             console.log(e);
         }
-        fs.unlinkSync(fileName);//Delete the pdf after sending email
+        fs.unlinkSync(fileName); //Delete the pdf after sending email
     }
 }
 

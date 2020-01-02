@@ -1,18 +1,12 @@
-const imageToPdf = require('../util/imageToPdf.util');
-const base64ToImage = require('../util/base64ToImage.util');
+const base64ToPdf = require('../util/base64ToPdf.util');
 const SendMail = require('../util/sendMail.util');
 
 const mailer = new SendMail();
 
 const snapAndSend = async (base64Data) => {
-    try {
-        let image = await base64ToImage(base64Data);
-        let pdf = await imageToPdf(image);
-        await mailer.sendMail(pdf);
-        return Promise.resolve();
-    } catch (e) {
-        return Promise.reject(e);
-    }
+    const image = await base64ToPdf(base64Data);
+    await mailer.sendMail(image);
+    return Promise.resolve('Success');
 }
 
 module.exports = snapAndSend;

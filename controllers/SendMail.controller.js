@@ -1,6 +1,6 @@
 const snapAndSend = require('../services/snapAndSend.service');
 
-exports.postSendEmail = async (req, res, next) => {
+exports.postSendEmail = (req, res, next) => {
     const {
         base64Data
     } = req.body;
@@ -11,8 +11,9 @@ exports.postSendEmail = async (req, res, next) => {
         return next(error);
     }
 
-    await snapAndSend(base64Data);
-    return res.send({
-        msg: "successful"
-    });
+    snapAndSend(base64Data)
+        .then(response => {
+            res.send(response);
+        })
+        .catch(error => res.send(error));
 };

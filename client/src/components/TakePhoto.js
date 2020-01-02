@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import Camera, { FACING_MODES } from 'react-html5-camera-photo';
+import Camera, {
+    FACING_MODES,
+    IMAGE_TYPES
+} from 'react-html5-camera-photo';
 import ImagePreview from './ImagePreview';
 import 'react-html5-camera-photo/build/css/index.css';
 import SendMailBtn from './SendMailBtn';
@@ -58,6 +61,7 @@ const TakePhoto = ({ setSnapPhoto, setShowAlert }) => {
                             onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
                             isFullscreen={isFullscreen}
                             idealFacingMode={FACING_MODES.ENVIRONMENT}
+                            imageType={IMAGE_TYPES.JPG}
                         />
                     </PreviewWrapper>
             }
