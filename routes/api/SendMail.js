@@ -8,7 +8,4 @@ const SendMailController = require('../../controllers/SendMail.controller');
 //  @access Public 
 router.post('/upload', SendMailController.postSendEmail);
 
-router.post('/zod', (req, res) => {
-    res.send('zodo');
-});
 module.exports = router;

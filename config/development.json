@@ -1,6 +1,6 @@
 {
-    "mailFrom": "zodbis@gmail.com",
-    "mailTo": "mustyzod@gmail.com",
+    "mailFrom": "sender@email.com",
+    "mailTo": "reciever@email.com",
     "SENDGRID_USERNAME": "",
     "SENDGRID_PASSWORD": ""
 }

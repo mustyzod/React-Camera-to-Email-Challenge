@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
 
-const BtnWrapper = styled.div `
+const BtnWrapper = styled.div`
     width:260px;
     display:flex;
     flex-direction:row;
 `;
-const Buttons = styled.div `
+const Buttons = styled.div`
     width:inherit;
     height:50px;
     border:solid 1px #173c0ed4;
@@ -40,26 +40,27 @@ const SendMailBtn = ({
                 console.log(err);
             });
     }
-    return ( <
-        BtnWrapper >
-        <
-        Buttons bgColor = {
-            '#bd1414c4'
-        }
-        onClick = {
-            () => setDataUri('')
-        } >
-        Retake <
-        /Buttons> <
-        Buttons bgColor = {
-            '#53ce3475'
-        }
-        onClick = {
-            () => SendMail(dataUri)
-        } >
-        Send <
-        /Buttons> < /
-        BtnWrapper >
+    return (
+        <BtnWrapper >
+            <Buttons
+                bgColor={
+                    '#bd1414c4'
+                }
+                onClick={
+                    () => setDataUri('')
+                } >
+                Retake
+        </Buttons>
+            <Buttons
+                bgColor={
+                    '#53ce3475'
+                }
+                onClick={
+                    () => SendMail(dataUri)
+                } >
+                Send
+        </Buttons>
+        </BtnWrapper >
     )
 }
 
