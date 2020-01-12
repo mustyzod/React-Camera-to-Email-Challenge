@@ -1,6 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 # IntelliJ project files
 .idea
+.DS_Store
 
 # Dependencies
 /node_modules
